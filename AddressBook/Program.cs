@@ -1,7 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
-using AddressBook;
+﻿using AddressBook;
 
 Console.WriteLine("------WelCome To Address Book Program------");
-AddAddressBook book = new AddAddressBook();
+AddressBookMain book = new AddressBookMain();
 book.AddContacts();
 book.Display();
