@@ -118,7 +118,18 @@ namespace AddressBook
             {
                 Console.WriteLine("Name is Not Exist");
             }
-
+        }    
+        public void DeleteContact()
+        {
+            Contact delete=new Contact();
+            Console.WriteLine("To Delet Contact List Enter Contact Id");
+            string id = Console.ReadLine();
+            if (contact.ID.Equals(id))
+            {
+                delete = contact;
+            }
+            addressBook.Remove(delete);
+            Display();
         }
     }
 }
