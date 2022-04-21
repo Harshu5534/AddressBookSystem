@@ -30,6 +30,7 @@ namespace LogicalProblems
                     case 4:
                         addContact.DeleteContact();
                         break;
+                   
                     case 5:
                         end = false;
                         Console.WriteLine("Program Is Ended");
