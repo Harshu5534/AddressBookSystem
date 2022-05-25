@@ -241,5 +241,29 @@ namespace AddressBook
                 return false;
             }
         }
+        public void SearchByCityState()
+        {
+            Console.WriteLine("Please enter the name of City or State:");
+
+            string WantedCityOrState = Console.ReadLine();
+            foreach (var data in addressBook)
+            {
+                string actualcity = data.City;
+                string actualState = data.State;
+                if (addressBook.Exists(data => (actualcity == WantedCityOrState || actualState == WantedCityOrState)))
+                {
+                    Console.WriteLine("Name of the Person : " + data.FirstName + " " + data.LastName);
+                    Console.WriteLine("Email ID : " + data.Email);
+                    Console.WriteLine("Mobile Number : " + data.PhoneNumber);
+                    Console.WriteLine("Address : " + data.Address);
+                    Console.WriteLine("City : " + data.City);
+                    Console.WriteLine("State : " + data.State);
+                    Console.WriteLine("ZipCode : " + data.ZipCode);
+                    Console.WriteLine("\n");
+                }
+                Console.WriteLine("City Or State Doesnt Exists In AddressBook");
+                return;
+            }
+        }
     }
 }
