@@ -8,11 +8,12 @@ namespace AddressBook
 {
     public class AddressBookMain
     {
-        List<Contact> addressBook = new List<Contact>();
-        Contact contact = new Contact();
+        List<ContactFile> addressBook = new List<ContactFile>();
+        Dictionary<string, List<ContactFile>> myDict = new Dictionary<string, List<ContactFile>>();
+        ContactFile contact = new ContactFile();
         public AddressBookMain()
         {
-            Contact contact1 = new Contact()
+            ContactFile contact1 = new ContactFile()
             {
                 FirstName = "Harshal",
                 LastName = "Patil",
@@ -23,7 +24,7 @@ namespace AddressBook
                 State = "Maharastra",
                 ZipCode = "425404"
             };
-            Contact contact2 = new Contact()
+            ContactFile contact2 = new ContactFile()
             {
                 FirstName = "Girish",
                 LastName = "Patil",
@@ -39,7 +40,6 @@ namespace AddressBook
         }
         public void CreateContact()
         {
-       
             Console.WriteLine("Enter Your First: ");
             contact.FirstName = Console.ReadLine();
             Console.WriteLine("Enter Your Last Name: ");
@@ -58,22 +58,25 @@ namespace AddressBook
             contact.ZipCode = Console.ReadLine();
             addressBook.Add(contact);
         }
+        public void addcontact (ContactFile contact)
+        {
+            addressBook.Add(contact);
+        }
         public void Display()
         {
-            foreach (var contact in addressBook)
+            foreach (ContactFile contact in addressBook)
             {
                 Console.WriteLine(contact.FirstName + "\n" + contact.LastName + "\n" + contact.Address + "\n" + contact.Email + "\n" + contact.PhoneNumber + "\n" + contact.City + "\n" + contact
                     .State + "\n" + contact.ZipCode);
                 Console.WriteLine("\n");
             }
         }
-        public void EditContact()
+        public void EditContact(string name)
         {
-            Console.WriteLine("Edit a contact list enter firstName");
-            string FirstName = Console.ReadLine();
+           
             foreach (var contact in addressBook)
             {
-                if (contact.FirstName.Equals(FirstName))
+                if (contact.FirstName.Equals(name))
                 {
                     Console.WriteLine("Edit a Contact\n1.FirstName\n2.LastName\n3.Address\n4.Email\n5.PhoneNumber\n6.City\n7.State\n8.ZipCode\n");
                     int option = Convert.ToInt32(Console.ReadLine());
@@ -116,28 +119,113 @@ namespace AddressBook
                             break;
                     }
                 }
-                
+
             }
             Console.WriteLine("\nEdit Successfully\n");
             Display();
         }
-        public void DeleteContact()
+        public void DeleteContact(string name)
         {
-            Contact delete=new Contact();
-            Console.WriteLine("To Delet Contact List Enter FirstName");
-            string FirstName = Console.ReadLine();
+            ContactFile delete = new ContactFile();
             foreach (var contact in addressBook)
             {
-                
-                if (contact.FirstName.Equals(FirstName))
+
+                if (contact.FirstName.Equals(name))
                 {
+                    Console.WriteLine("Given Name Contact Exists");
                     delete = contact;
+
+                    addressBook.Remove(delete);
+                    Console.WriteLine("\nContact Deleted SuccessFully\n");
+                }
+                else
+                {
+                    Console.WriteLine("Given Contact Does Not Exists");
                 }
             }
-            addressBook.Remove(delete);
-            Console.WriteLine("\nContact Deleted SuccessFully\n");
             Display();
+        }
+        public void Adduniquecontacts()
+        {
+            Console.WriteLine("Enter the Firstname in your contactlist");
+            string name = Console.ReadLine();
+            foreach (var data in addressBook)
+            {
+                if (addressBook.Contains(data))
+                {
+                    if (data.FirstName == name)
+                    {
+                        Console.WriteLine("This contact exists please enter an unique name to store this data");
+                        string uniquename = Console.ReadLine();
+                        if (myDict.ContainsKey(uniquename))
+                        {
+                            Console.WriteLine("This unique name already exists");
+                        }
+                        myDict.Add(uniquename, addressBook);
+                        return;
+                    }
+                }
+            }
+            Display();
+        }
+        public void AddDictionary(string name)
+        {
+            if (myDict == null)
+            {
+                myDict.Add(name, addressBook);
+            }
+            if (NameExists(name) == false)
+            {
+                myDict.Add(name, addressBook);
+            }
+            Console.WriteLine(myDict);
+        }
+        public void DisplayDictionary(string name)
+        {
+            foreach(var data in myDict)
+            {
+                if (data.Key.Equals(name))
+                {
+                    addressBook = data.Value;
+                }
+                //Console.WriteLine(myDict);
+            }
+            Display();
+        }
+        public void EditDictionary(string name,string contactName)
+        {
+            foreach(var data in myDict)
+            {
+                if(data.Key.Equals(name))
+                {
+                    addressBook = data.Value;
+                }
+            }
+            EditContact(contactName);
+            Display();
+        }
+        public void DeletDictionary(string name)
+        {
+            foreach(var data in myDict)
+            {
+                if(data.Key.Equals(name))
+                {
+                    addressBook=data.Value;
+                }
+            }
+            DeleteContact(name);
+            myDict.Remove(name);
+        }
+        public bool NameExists(string name)
+        {
+            foreach (var data in myDict.Keys)
+            {
+                if (data.Equals(name))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
-

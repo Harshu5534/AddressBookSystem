@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddressBook
 {
-    public class Contact
+    public class ContactFile
     { 
         public string FirstName { get; set; }
         public string LastName { get; set; }
