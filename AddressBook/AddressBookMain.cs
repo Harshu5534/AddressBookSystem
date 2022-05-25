@@ -227,5 +227,19 @@ namespace AddressBook
             }
             return false;
         }
+        public bool DuplicateEntryCheck(string name)
+        {
+            bool found = addressBook.Any(e => (e.FirstName.ToLower().Equals(name.ToLower())));
+            if (found)
+            {
+                Console.WriteLine("Duplicate Entry Present In AddressBook");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Duplicate Entry Not Present In AddressBook");
+                return false;
+            }
+        }
     }
 }

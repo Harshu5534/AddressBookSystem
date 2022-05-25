@@ -9,7 +9,7 @@ namespace LogicalProblems
         {
             Console.WriteLine("------WelCome To Address Book Program------");
             bool end = true;
-            Console.WriteLine("SelectNumber\n1.Add Contact\n2.Display\n3.EditContact\n4.DeleteContact\n5.Add Dictionary\n6.Edit Dictionary\n7.Adduniquecontacts\n8.Display Dictionary\n9.Delete Dictionary\n10.End Of Program");
+            Console.WriteLine("SelectNumber\n1.Add Contact\n2.Display\n3.EditContact\n4.DeleteContact\n5.Add Dictionary\n6.Edit Dictionary\n7.Adduniquecontacts\n8.Delete Dictionary\n9.DuplicateEntryCheck\n10.End Of Program");
             ContactFile contact = new ContactFile();
             AddressBookMain addContact = new AddressBookMain();
             while (end)
@@ -45,12 +45,15 @@ namespace LogicalProblems
                         addContact.Adduniquecontacts();
                         break;
                     case 8:
-                        Console.WriteLine("Enter Name to display data in dictionary: ");
-                        string dictionary = Console.ReadLine();
-                        addContact.DisplayDictionary(dictionary);
+                        addContact.DeletDictionary("FirstName");
                         break;
                     case 9:
-                        addContact.DeletDictionary("FirstName");
+                        string name2 = Console.ReadLine();
+                        bool existName = addContact.DuplicateEntryCheck(name2);
+                        if (existName)
+                        {
+                            Console.WriteLine("This contact already exist please add new entry");
+                        }
                         break;
                     case 10:
                         end = false;
