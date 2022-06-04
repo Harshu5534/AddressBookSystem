@@ -267,22 +267,6 @@ namespace AddressBook
                 return;
             }
         }
-        public void CountByCityState()
-        {
-            Console.WriteLine("Please enter the name of City or State:");
-            string WantedCityOrState = Console.ReadLine();
-            int Count = 0;
-            foreach (var data in addressBook)
-            {
-                string ActualCity = data.City;
-                string ActualState = data.State;
-                if (addressBook.Exists(data => (ActualCity == WantedCityOrState) || (ActualState == WantedCityOrState)))
-                {
-                    Count++;
-                }
-            }
-            Console.WriteLine("There are {0} Persons in {1}", Count, WantedCityOrState);
-        }
         public void ContactByCityInDictionary()
         {
             // adding list to cities dictionary
