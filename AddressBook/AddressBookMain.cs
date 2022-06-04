@@ -383,5 +383,64 @@ namespace AddressBook
                 }
             }
         }
+        public void SortingList_city()
+        {
+            List<ContactFile> SortedList = new List<ContactFile>();
+            SortedList = addressBook.OrderBy(s => s.City).ToList();
+            //foreach(var data in People.OrderBy(s => s.firstName).ToList())
+            foreach (var data in SortedList)
+            {
+                if (addressBook.Contains(data))
+                {
+                    Console.WriteLine("Name of person : " + data.FirstName + " " + data.LastName);
+                    Console.WriteLine("Address of person is : " + data.Address);
+                    Console.WriteLine("Email of person : " + data.Email);
+                    Console.WriteLine("Phone Number of person : " + data.PhoneNumber);
+                    Console.WriteLine("City : " + data.City);
+                    Console.WriteLine("State :" + data.State);
+                    Console.WriteLine("Zip :" + data.ZipCode);
+                }
+            }
+        }
+        // sorting the contact list by state name in alphabetical order
+        public void SortingList_State()
+        {
+            List<ContactFile> SortedList = new List<ContactFile>();
+            SortedList = addressBook.OrderBy(s => s.State).ToList();
+            //foreach(var data in People.OrderBy(s => s.firstName).ToList())
+            foreach (var data in SortedList)
+            {
+                if (addressBook.Contains(data))
+                {
+                    Console.WriteLine("Name of person : " + data.FirstName + " " + data.LastName);
+                    Console.WriteLine("Address of person is : " + data.Address);
+                    Console.WriteLine("Email of person : " + data.Email);
+                    Console.WriteLine("Phone Number of person : " + data.PhoneNumber);
+                    Console.WriteLine("City : " + data.City);
+                    Console.WriteLine("State :" + data.State);
+                    Console.WriteLine("Zip :" + data.ZipCode);
+                }
+            }
+        }
+        // sorting the contact list by zip
+        public void SortingList_Zip()
+        {
+            List<ContactFile> SortedList = new List<ContactFile>();
+            SortedList = addressBook.OrderBy(s => s.ZipCode).ToList();
+            //foreach(var data in People.OrderBy(s => s.firstName).ToList())
+            foreach (var data in SortedList)
+            {
+                if (addressBook.Contains(data))
+                {
+                    Console.WriteLine("Name of person : " + data.FirstName + " " + data.LastName);
+                    Console.WriteLine("Address of person is : " + data.Address);
+                    Console.WriteLine("Email of person : " + data.Email);
+                    Console.WriteLine("Phone Number of person : " + data.PhoneNumber);
+                    Console.WriteLine("City : " + data.City);
+                    Console.WriteLine("State :" + data.State);
+                    Console.WriteLine("Zip :" + data.ZipCode);
+                }
+            }
+        }
     }
 }
