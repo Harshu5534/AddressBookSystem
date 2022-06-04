@@ -442,5 +442,24 @@ namespace AddressBook
                 }
             }
         }
+        string path = @"E:\VisualPractise\AddressBookSystem\AddressBook\Address.txt";
+        public void WriteToTextFile()
+        {
+            using (TextWriter Tw = File.AppendText(path))
+            {
+                foreach (ContactFile item in addressBook)
+                {
+                    Tw.WriteLine("First Name:" + item.FirstName.ToString());
+                }
+            }
+        }
+        public void ReadFileIO()
+        {
+            string lines;
+
+            lines = File.ReadAllText(path);
+            Console.WriteLine("Reading All the Text");
+            Console.WriteLine(lines);
+        }
     }
 }
