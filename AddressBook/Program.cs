@@ -9,7 +9,7 @@ namespace LogicalProblems
         {
             Console.WriteLine("------WelCome To Address Book Program------");
             bool end = true;
-            Console.WriteLine("SelectNumber\n1.Add Contact\n2.Display\n3.EditContact\n4.DeleteContact\n5.Add Dictionary\n6.Edit Dictionary\n7.Adduniquecontacts\n8.Delete Dictionary\n9.DuplicateEntryCheck\n10.SearchByCityState\n11.Get Count of Persons by City or State\n12.Maintain Dictionary_city\n13.Maintain Dictionary_state\n14.End Of Program");
+            Console.WriteLine("SelectNumber\n1.Add Contact\n2.Display\n3.EditContact\n4.DeleteContact\n5.Add Dictionary\n6.Edit Dictionary\n7.Adduniquecontacts\n8.Delete Dictionary\n9.DuplicateEntryCheck\n10.SearchByCityState\n11.Get Count of Persons by City or State\n12.Maintain Dictionary_city\n13.Maintain Dictionary_state\n14.Sorting list by firstNames\n15.End Of Program");
             ContactFile contact = new ContactFile();
             AddressBookMain addContact = new AddressBookMain();
             while (end)
@@ -70,6 +70,9 @@ namespace LogicalProblems
                         addContact.DictionayState_Display();
                         break;
                     case 14:
+                        addContact.SortingList();
+                        break;
+                    case 15:
                         end = false;
                         Console.WriteLine("Program Is Ended");
                         break;
