@@ -283,7 +283,6 @@ namespace AddressBook
             }
             Console.WriteLine("There are {0} Persons in {1}", Count, WantedCityOrState);
         }
-        // uc9 Dictionary for the City and state
         public void ContactByCityInDictionary()
         {
             // adding list to cities dictionary
